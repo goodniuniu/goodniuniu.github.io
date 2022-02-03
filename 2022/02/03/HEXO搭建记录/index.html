@@ -14,7 +14,7 @@
 <meta property="og:description" content="起因在昨天完成基于JEKYLL的静态网页搭建后，发现始终是有几个md无法展现，在github发了相关的issue提问后，发现这个项目已经很久没有人回复了，而自己因为并不了解JEKYLL的建立机制，从零开始去解决这个使用层面的偶发问题，感觉会消耗大量的时间。 为此我选择了基于HEXO重新搭建，原因在于：  网上的教程都比较的新。 静态页面直接提供的主题也不少，而且看到别人的演示页面风格也喜欢。 能在">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-02-03T01:49:16.000Z">
-<meta property="article:modified_time" content="2022-02-03T02:17:06.927Z">
+<meta property="article:modified_time" content="2022-02-03T02:30:21.048Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -118,8 +118,13 @@
 <li>关联GitHub，修改项目中的_config.yml文件<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
 </ol>
 </li>
+<li><p>绑定域名</p>
+<ol>
+<li>在github中生成CNAME文件，写入绑定的域名</li>
+<li></li>
 </ol>
-<p>​              </p>
+</li>
+</ol>
 <h2 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h2><ol>
 <li>在部署新项目的时候，需要看看项目的可靠性，包括了作者的更新时间，参与人员的数量等。</li>
 <li>在决定技术引入的时候，优先考虑可以本地化模拟的项目，然后再在云端发布，这样做初期可控性要好许多。</li>
@@ -148,11 +153,6 @@
       </div>
     </a>
   
-  
-    <a href="/2022/02/03/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
   
 </nav>
 
@@ -194,10 +194,6 @@
         
           <li>
             <a href="/2022/02/03/HEXO%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/">基于HEXO的搭建</a>
-          </li>
-        
-          <li>
-            <a href="/2022/02/03/hello-world/">Hello World</a>
           </li>
         
       </ul>
