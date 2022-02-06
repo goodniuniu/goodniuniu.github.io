@@ -249,6 +249,282 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://goodniuniu.github.io/2022/02/06/20220206-map-of-science-md/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Time Stamp">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/02/06/20220206-map-of-science-md/" itemprop="url">如何解决tag和categories的区别.md</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-02-06T13:20:23+08:00">
+                2022-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/social-sciences-education/" itemprop="url" rel="index">
+                    <span itemprop="name">social sciences; education</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <img src="https://raw.githubusercontent.com/goodniuniu/PictureBed/main/blog_img/img/picgo/202202061320881-map_of_science.png" style="zoom:80%;" />
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-draft" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://goodniuniu.github.io/2022/02/06/20220206-%E9%80%9A%E8%BF%87%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E4%BA%86%E8%A7%A3%E5%AE%B9%E5%99%A8-md/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Time Stamp">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/02/06/20220206-%E9%80%9A%E8%BF%87%E7%B3%BB%E7%BB%9F%E8%BF%9B%E7%A8%8B%E4%BA%86%E8%A7%A3%E5%AE%B9%E5%99%A8-md/" itemprop="url">20220206.通过系统进程了解容器.md</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-02-06T12:07:26+08:00">
+                2022-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>通过操作系统进程相关的知识，逐步剖析 Docker 容器的方法，是理解容器的一个关键思路：</p>
+<h2 id="Docker-关键技术的梳理"><a href="#Docker-关键技术的梳理" class="headerlink" title="Docker 关键技术的梳理"></a>Docker 关键技术的梳理</h2><h3 id="目标1-构建同宿主机完全隔离开的文件系统环境"><a href="#目标1-构建同宿主机完全隔离开的文件系统环境" class="headerlink" title="目标1:构建同宿主机完全隔离开的文件系统环境"></a>目标1:构建同宿主机完全隔离开的文件系统环境</h3><h4 id="rootfs-机制"><a href="#rootfs-机制" class="headerlink" title="rootfs 机制"></a>rootfs 机制</h4><h4 id="Mount-Namespace"><a href="#Mount-Namespace" class="headerlink" title="Mount Namespace"></a>Mount Namespace</h4><h3 id="目标2-解决容器读取的需求"><a href="#目标2-解决容器读取的需求" class="headerlink" title="目标2:解决容器读取的需求"></a>目标2:解决容器读取的需求</h3><h4 id="Volume（数据卷）"><a href="#Volume（数据卷）" class="headerlink" title="Volume（数据卷）"></a>Volume（数据卷）</h4><ol>
+<li>技术原理</li>
+<li></li>
+</ol>
+<p>Linux 容器的核心实现原理</p>
+<ul>
+<li><p>Linux Namespace 的隔离能力</p>
+</li>
+<li><p>Linux Cgroups 的限制能力</p>
+</li>
+<li><p>基于 rootfs 的文件系统</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://goodniuniu.github.io/2022/02/06/20220206-%E5%AF%B9%E8%87%AA%E5%B7%B1%E5%AF%B9%E5%A4%A7%E8%84%91%E5%A5%BD-md/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1556,151 +1832,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://goodniuniu.github.io/2022/02/03/hello-world-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Time Stamp">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2022/02/03/hello-world-1/" itemprop="url">Hello World again</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-02-03T09:49:16+08:00">
-                2022-02-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Daily/" itemprop="url" rel="index">
-                    <span itemprop="name">Daily</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Hello World!<br><img src="https://s2.loli.net/2022/02/02/S49sx2Jpf7g36Yr.png"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </nav>
+
 
 
           </div>
@@ -1744,7 +1882,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1755,7 +1893,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
