@@ -67,9 +67,11 @@ theme_config:
     theme:
       enable: true
 
-# 部署到 GitHub Pages：源工程构建后发布到仓库默认分支
-# 首次部署前请务必先用 `hexo g && hexo s` 本地核对生成结果，确认无误再 `hexo d`
-deploy:
-  type: git
-  repo: https://github.com/goodniuniu/goodniuniu.github.io.git
-  branch: master
+# 部署已由 GitHub Actions 自动完成（见 .github/workflows/deploy.yml）
+# 使用 peaceiris/actions-gh-pages 将 public/ 发布到 gh-pages 分支，
+# 再在仓库 Settings → Pages 中将 Source 设为 gh-pages 分支。
+# 如需本地手动部署，可取消下方注释（会推送到 master）：
+# deploy:
+#   type: git
+#   repo: https://github.com/goodniuniu/goodniuniu.github.io.git
+#   branch: master
