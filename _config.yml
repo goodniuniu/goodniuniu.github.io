@@ -1,0 +1,72 @@
+# Hexo 站点配置（由 goodniuniu.github.io 现网 HTML 反向还原）
+title: Time Stamp
+subtitle: ''
+description: ''
+author: goodniuniu
+language: zh-Hans
+timezone: ''
+
+url: https://www.goodniuniu.com
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+new_post_name: :title.md
+default_layout: post
+titlecase: false
+external_link: true
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  tab_replace: ''
+
+theme: next
+
+# NexT 5.1.4 (Gemini) 主题配置——由现网推断，按需微调
+theme_config:
+  scheme: Gemini
+  language: zh-Hans
+  menu:
+    首页: /
+    标签: /tags/
+    分类: /categories/
+    归档: /archives/
+  menu_icons:
+    首页: home
+    标签: tags
+    分类: th
+    归档: archive
+  sidebar:
+    position: left
+    display: post
+    b2t: true
+    scrollpercent: true
+    onmobile: false
+  fancybox: true
+  tabs: true
+  motion:
+    enable: true
+  footer:
+    theme:
+      enable: true
+
+# 部署到 GitHub Pages：源工程构建后发布到仓库默认分支
+# 首次部署前请务必先用 `hexo g && hexo s` 本地核对生成结果，确认无误再 `hexo d`
+deploy:
+  type: git
+  repo: https://github.com/goodniuniu/goodniuniu.github.io.git
+  branch: master
