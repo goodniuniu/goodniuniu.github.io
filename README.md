@@ -46,18 +46,17 @@ git push
 
 ## 本地预览（可选）
 
-本仓库唯一的本地工作副本在 `E:\Github\goodniuniu.github.io`（WSL 中路径
-`/mnt/e/Github/goodniuniu.github.io`）。写作用 Typora（Windows）打开此目录；
-预览和构建在 WSL 中操作同一目录：
+本仓库唯一的本地工作副本在 WSL 的 `~/blog`。写作用 Typora（Windows）打开
+`\\wsl$\Ubuntu\home\sam\blog`；预览和构建在 WSL 中操作：
 
 ```bash
-cd /mnt/e/Github/goodniuniu.github.io
+cd ~/blog
 npx hexo server          # 启动本地预览，Windows 浏览器访问 http://localhost:4000
 ```
 
 > 本地预览只是辅助手段，发布仍由云端自动完成。
-> 提示：WSL 访问 /mnt/e（Windows 盘）的文件性能略低于 Linux 原生目录，
-> `npm install` / `hexo generate` 会稍慢，属正常现象。
+> 提示：`~/blog` 位于 Linux 原生文件系统，hexo server 的文件监听正常工作，
+> 保存文章后自动重建刷新即可看到效果；Typora 经 `\\wsl$` 访问略慢，可接受。
 
 ## 目录结构
 
