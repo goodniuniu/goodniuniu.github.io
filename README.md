@@ -62,9 +62,10 @@ npx hexo server          # 启动本地预览，Windows 浏览器访问 http://l
 ## 目录结构
 
 ```
-_config.yml                    # 站点 + NexT 5.1.4(Gemini) 配置
-package.json                   # 依赖（hexo 6 + hexo-theme-next@5.1.4 + git 部署器）
+_config.yml                    # 站点 + NexT 8(Gemini) 配置
+package.json                   # 依赖（hexo 6 + hexo-theme-next@8）
 scaffolds/post.md              # 新文章模板（hexo new 时使用，含 slug/categories/tags）
+scripts/rewrite-images.js      # Typora 图片相对路径改写（见上文图片设置）
 source/_posts/*.md             # 已发布的文章
 source/_drafts/*.md            # 草稿（不会被发布；本地 hexo server --draft 可预览）
 source/<静态资源>               # CNAME / favicon / images 等（构建时复制到站点根目录）
