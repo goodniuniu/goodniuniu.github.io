@@ -44,15 +44,12 @@ theme_config:
   scheme: Gemini
   language: zh-Hans
   menu:
-    首页: /
-    标签: /tags/
-    分类: /categories/
-    归档: /archives/
+    home: /||home
+    tags: /tags/||tags
+    categories: /categories/||th
+    archives: /archives/||archive
   menu_icons:
-    首页: home
-    标签: tags
-    分类: th
-    归档: archive
+    enable: true
   sidebar:
     position: left
     display: post
