@@ -60,7 +60,12 @@ theme_config:
     scrollpercent: true
     onmobile: false
   fancybox: true
-  tabs: true
+  tabs:
+    enable: true
+    transition:
+      tabs: false
+      labels: true
+    border_radius: 0
   motion:
     enable: true
   footer:
