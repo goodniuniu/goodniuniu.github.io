@@ -46,14 +46,18 @@ git push
 
 ## 本地预览（可选）
 
-仓库在 WSL 中的本地工作副本为 `~/blog`（已克隆 `source` 分支并装好依赖）：
+本仓库唯一的本地工作副本在 `E:\Github\goodniuniu.github.io`（WSL 中路径
+`/mnt/e/Github/goodniuniu.github.io`）。写作用 Typora（Windows）打开此目录；
+预览和构建在 WSL 中操作同一目录：
 
 ```bash
-cd ~/blog
-npx hexo server          # 启动本地预览，访问 http://localhost:4000
+cd /mnt/e/Github/goodniuniu.github.io
+npx hexo server          # 启动本地预览，Windows 浏览器访问 http://localhost:4000
 ```
 
-> 本地预览只是辅助手段，发布仍由云端自动完成。E 盘下的 `/mnt/e/Github/goodniuniu.github.io` 与 `~/blog` 是同一仓库的两个工作副本，任选其一编辑，注意先 `git pull` 再改，避免冲突。
+> 本地预览只是辅助手段，发布仍由云端自动完成。
+> 提示：WSL 访问 /mnt/e（Windows 盘）的文件性能略低于 Linux 原生目录，
+> `npm install` / `hexo generate` 会稍慢，属正常现象。
 
 ## 目录结构
 
