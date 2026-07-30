@@ -3,9 +3,9 @@
 本仓库采用 **单仓库双分支** 结构：
 
 - `source` 分支：Hexo 博客源码（Markdown 文章 + 配置 + 主题依赖），即你日常编辑的内容。
-- `master` 分支：由 GitHub Actions 自动构建并发布的静态站点（GitHub Pages 实际访问的内容）。
+- `gh-pages` 分支：由 GitHub Actions 自动构建并发布的静态站点（GitHub Pages 实际访问的内容，在仓库 Settings → Pages 中将 Source 设为 gh-pages 分支）。
 
-> ⚠️ 不要手动修改 `master` 分支，它由工作流自动维护。
+> ⚠️ 不要手动修改 `gh-pages` 分支，它由工作流自动维护（每次发布为孤立提交，不保留历史）。
 
 ## 本地写作（Typora）
 
@@ -31,7 +31,7 @@ git push
 ```
 
 推送 `source` 分支会**自动触发** GitHub Actions：
-`npm install` → `hexo generate` → 部署到 `master`。
+`npm install` → `hexo generate` → 部署到 `gh-pages` 分支（GitHub Pages 从这里取内容）。
 因此你**无需在本地安装 Node.js / Hexo** 即可发布。
 
 ## 本地预览（可选）
@@ -50,12 +50,14 @@ npx hexo server          # 启动本地预览，访问 http://localhost:4000
 ```
 _config.yml                    # 站点 + NexT 5.1.4(Gemini) 配置
 package.json                   # 依赖（hexo 6 + hexo-theme-next@5.1.4 + git 部署器）
-scaffolds/post.md              # 新文章模板（hexo new 时使用）
-source/_posts/*.md             # 你的文章
+scaffolds/post.md              # 新文章模板（hexo new 时使用，含 slug/categories/tags）
+source/_posts/*.md             # 已发布的文章
+source/_drafts/*.md            # 草稿（不会被发布；本地 hexo server --draft 可预览）
 source/<静态资源>               # CNAME / favicon / images 等（构建时复制到站点根目录）
 .github/workflows/deploy.yml   # 自动部署工作流
 ```
 
 ## 找回历史
 
-`master` 分支保留完整 git 历史。若自动部署结果异常，可在 `master` 上回退到旧提交恢复线上站点。
+`source` 分支保留完整源码历史，回退源码后重新推送即可恢复线上站点。
+注意：`gh-pages` 分支每次发布都是孤立提交（force_orphan），不保留历史，不要依赖它回滚。

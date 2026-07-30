@@ -5,7 +5,7 @@ date: 2022-02-03 09:49:16
 categories:
   - Daily
 tags:
-  - # Pic
+  - Pic
 ---
 
 Hello World!

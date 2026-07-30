@@ -5,7 +5,7 @@ date: 2022-03-07 21:02:59
 categories:
   - Listening
 tags:
-  - # Listening
+  - Listening
 ---
 
 [https://www.notion.so/Hitting-an-afternoon-slump-c43b291d439e490ba8d3c6ec254c4e59](https://www.notion.so/Hitting-an-afternoon-slump-c43b291d439e490ba8d3c6ec254c4e59))
