@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1b1140"/>
+      <stop offset="0.42" stop-color="#6e2b5c"/>
+      <stop offset="0.72" stop-color="#d95a44"/>
+      <stop offset="1" stop-color="#f4a960"/>
+    </linearGradient>
+    <radialGradient id="sunglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#fff0bd"/>
+      <stop offset="0.55" stop-color="#ffd47a" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#ffd47a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gobi" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7d4530"/>
+      <stop offset="1" stop-color="#2e1a12"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 天空 -->
+  <rect width="1200" height="630" fill="url(#sky)"/>
+
+  <!-- 落日与光晕 -->
+  <circle cx="600" cy="455" r="200" fill="url(#sunglow)"/>
+  <circle cx="600" cy="455" r="64" fill="#ffdf9e"/>
+
+  <!-- 远山（雪山） -->
+  <path d="M0 500 L130 350 L230 440 L350 320 L480 470 L610 350 L740 480 L870 360 L1000 470 L1120 380 L1200 430 L1200 630 L0 630 Z"
+        fill="#b9a7cf"/>
+  <!-- 雪顶 -->
+  <path d="M130 350 l-26 34 h52 Z" fill="#f4eef7"/>
+  <path d="M350 320 l-30 40 h60 Z" fill="#f4eef7"/>
+  <path d="M610 350 l-26 34 h52 Z" fill="#f4eef7"/>
+  <path d="M870 360 l-24 32 h48 Z" fill="#f4eef7"/>
+  <path d="M1120 380 l-22 30 h44 Z" fill="#f4eef7"/>
+
+  <!-- 近山丘陵 -->
+  <path d="M0 545 L180 445 L360 555 L560 455 L760 560 L950 465 L1200 555 L1200 630 L0 630 Z"
+        fill="#4d2740"/>
+
+  <!-- 戈壁 -->
+  <rect y="560" width="1200" height="70" fill="url(#gobi)"/>
+
+  <!-- 公路 -->
+  <path d="M588 560 L612 560 L700 630 L500 630 Z" fill="#241509"/>
+  <path d="M599 566 L601 566 L604 574 L596 574 Z" fill="#e8c37a"/>
+  <path d="M598 582 L602 582 L607 594 L593 594 Z" fill="#e8c37a"/>
+  <path d="M596 604 L604 604 L612 622 L588 622 Z" fill="#e8c37a"/>
+
+  <!-- 旅人剪影 -->
+  <circle cx="540" cy="576" r="7" fill="#1c0f08"/>
+  <path d="M540 583 q-9 2 -9 14 l0 16 q0 4 4 4 l10 0 q4 0 4 -4 l0 -16 q0 -12 -9 -14 Z" fill="#1c0f08"/>
+</svg>
