@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f6e3bd"/>
+      <stop offset="0.75" stop-color="#ecd2a0"/>
+      <stop offset="1" stop-color="#e0bd84"/>
+    </linearGradient>
+    <radialGradient id="light" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#fff6d8" stop-opacity="0.95"/>
+      <stop offset="0.6" stop-color="#ffdf9e" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#ffdf9e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d9b57f"/>
+      <stop offset="1" stop-color="#b98f56"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 米黄色墙面 -->
+  <rect width="1200" height="630" fill="url(#wall)"/>
+  <!-- 斜照的夕阳光 -->
+  <ellipse cx="180" cy="180" rx="340" ry="300" fill="url(#light)"/>
+  <!-- 地面 -->
+  <rect y="560" width="1200" height="70" fill="url(#floor)"/>
+  <rect y="556" width="1200" height="4" fill="#c9a06a"/>
+
+  <!-- 五道影子：从各自脚下伸向不同方向，歪斜却挨在一起 -->
+  <path d="M418 586 L446 586 L760 630 L690 630 Z" fill="#a37c4c" opacity="0.55"/>
+  <path d="M518 586 L546 586 L820 630 L760 630 Z" fill="#a37c4c" opacity="0.5"/>
+  <path d="M618 586 L646 586 L880 630 L812 630 Z" fill="#a37c4c" opacity="0.55"/>
+  <path d="M718 586 L746 586 L950 630 L880 630 Z" fill="#a37c4c" opacity="0.5"/>
+  <path d="M818 586 L846 586 L1020 630 L948 630 Z" fill="#a37c4c" opacity="0.55"/>
+
+  <!-- 五个人影剪影（深赭色） -->
+  <g fill="#33231a">
+    <!-- 第1人 -->
+    <circle cx="432" cy="500" r="15"/>
+    <path d="M432 515 q-14 3 -14 22 l0 36 q0 13 14 13 q14 0 14 -13 l0 -36 q0 -19 -14 -22 Z"/>
+    <!-- 第2人 -->
+    <circle cx="532" cy="494" r="16"/>
+    <path d="M532 510 q-15 3 -15 24 l0 38 q0 14 15 14 q15 0 15 -14 l0 -38 q0 -21 -15 -24 Z"/>
+    <!-- 第3人 -->
+    <circle cx="632" cy="498" r="15"/>
+    <path d="M632 513 q-14 3 -14 23 l0 37 q0 13 14 13 q14 0 14 -13 l0 -37 q0 -20 -14 -23 Z"/>
+    <!-- 第4人 -->
+    <circle cx="732" cy="502" r="14"/>
+    <path d="M732 516 q-13 3 -13 21 l0 35 q0 12 13 12 q13 0 13 -12 l0 -35 q0 -18 -13 -21 Z"/>
+    <!-- 第5人 -->
+    <circle cx="832" cy="496" r="15"/>
+    <path d="M832 511 q-14 3 -14 23 l0 37 q0 13 14 13 q14 0 14 -13 l0 -37 q0 -20 -14 -23 Z"/>
+  </g>
+</svg>

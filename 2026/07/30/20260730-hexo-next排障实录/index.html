@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.css" integrity="sha256-gkQVf8UKZgQ0HyuxL/VnacadJ+D2Kox2TCEBuNQg5+w=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"www.goodniuniu.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.28.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="本文记录 2026-07-30 下午对博客的一次连环排障：页面白屏、菜单 404，根因都是 Hexo 6 与 NexT 5.1.4（2019 年的老主题）之间的兼容性缝隙。修复提交 7be4910、83095a8、a745a2f。 一、症状与根因1. 页面白屏：只有侧栏外壳，正文一片空白排查路径值得记录：先用 curl 检查，HTML、CSS、JS 全部 200 且内容正确——服务端”看起来”没问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo + NexT 老主题排障实录：白屏、菜单 404 与兼容性修复">
+<meta property="og:url" content="https://www.goodniuniu.com/2026/07/30/20260730-hexo-next%E6%8E%92%E9%9A%9C%E5%AE%9E%E5%BD%95/index.html">
+<meta property="og:site_name" content="Time Stamp">
+<meta property="og:description" content="本文记录 2026-07-30 下午对博客的一次连环排障：页面白屏、菜单 404，根因都是 Hexo 6 与 NexT 5.1.4（2019 年的老主题）之间的兼容性缝隙。修复提交 7be4910、83095a8、a745a2f。 一、症状与根因1. 页面白屏：只有侧栏外壳，正文一片空白排查路径值得记录：先用 curl 检查，HTML、CSS、JS 全部 200 且内容正确——服务端”看起来”没问">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-07-30T14:50:00.000Z">
+<meta property="article:modified_time" content="2026-07-31T10:04:02.725Z">
+<meta property="article:author" content="goodniuniu">
+<meta property="article:tag" content="Practice">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.goodniuniu.com/2026/07/30/20260730-hexo-next%E6%8E%92%E9%9A%9C%E5%AE%9E%E5%BD%95/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://www.goodniuniu.com/2026/07/30/20260730-hexo-next%E6%8E%92%E9%9A%9C%E5%AE%9E%E5%BD%95/","path":"2026/07/30/20260730-hexo-next排障实录/","title":"Hexo + NexT 老主题排障实录：白屏、菜单 404 与兼容性修复"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Hexo + NexT 老主题排障实录：白屏、菜单 404 与兼容性修复 | Time Stamp</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.31/fancybox/fancybox.umd.js" integrity="sha256-a+H7FYzJv6oU2hfsfDGM2Ohw/cR9v+hPfxHCLdmCrE8=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+  <script src="/js/third-party/fancybox.js" defer></script>
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Time Stamp</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%97%87%E7%8A%B6%E4%B8%8E%E6%A0%B9%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">一、症状与根因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%A1%B5%E9%9D%A2%E7%99%BD%E5%B1%8F%EF%BC%9A%E5%8F%AA%E6%9C%89%E4%BE%A7%E6%A0%8F%E5%A4%96%E5%A3%B3%EF%BC%8C%E6%AD%A3%E6%96%87%E4%B8%80%E7%89%87%E7%A9%BA%E7%99%BD"><span class="nav-number">1.1.</span> <span class="nav-text">1. 页面白屏：只有侧栏外壳，正文一片空白</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%8F%9C%E5%8D%95%E7%82%B9%E5%87%BB%E6%8A%A5-Cannot-GET-archives-20"><span class="nav-number">1.2.</span> <span class="nav-text">2. 菜单点击报 Cannot GET &#x2F;archives&#x2F;%20</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%A0%87%E7%AD%BE%E9%A1%B5%E3%80%81%E5%88%86%E7%B1%BB%E9%A1%B5-404"><span class="nav-number">1.3.</span> <span class="nav-text">3. 标签页、分类页 404</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%96%B9%E6%B3%95%E8%AE%BA%E6%94%B6%E8%8E%B7"><span class="nav-number">2.</span> <span class="nav-text">二、方法论收获</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%81%97%E7%95%99%E4%B8%8E%E5%BB%BA%E8%AE%AE"><span class="nav-number">3.</span> <span class="nav-text">三、遗留与建议</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">goodniuniu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.goodniuniu.com/2026/07/30/20260730-hexo-next%E6%8E%92%E9%9A%9C%E5%AE%9E%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="goodniuniu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Time Stamp">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Hexo + NexT 老主题排障实录：白屏、菜单 404 与兼容性修复 | Time Stamp">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo + NexT 老主题排障实录：白屏、菜单 404 与兼容性修复
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2026-07-30 14:50:00" itemprop="dateCreated datePublished" datetime="2026-07-30T14:50:00+00:00">2026-07-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2026-07-31 10:04:02" itemprop="dateModified" datetime="2026-07-31T10:04:02+00:00">2026-07-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Daily/" itemprop="url" rel="index"><span itemprop="name">Daily</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>本文记录 2026-07-30 下午对博客的一次连环排障：页面白屏、菜单 404，根因都是 <strong>Hexo 6 与 NexT 5.1.4（2019 年的老主题）之间的兼容性缝隙</strong>。修复提交 <code>7be4910</code>、<code>83095a8</code>、<code>a745a2f</code>。</p>
+<h2 id="一、症状与根因"><a href="#一、症状与根因" class="headerlink" title="一、症状与根因"></a>一、症状与根因</h2><h3 id="1-页面白屏：只有侧栏外壳，正文一片空白"><a href="#1-页面白屏：只有侧栏外壳，正文一片空白" class="headerlink" title="1. 页面白屏：只有侧栏外壳，正文一片空白"></a>1. 页面白屏：只有侧栏外壳，正文一片空白</h3><p>排查路径值得记录：先用 curl 检查，HTML、CSS、JS 全部 200 且内容正确——服务端”看起来”没问题。最后用无头 Chrome 抓取控制台才定位到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Uncaught SyntaxError: Unexpected token &#x27;,&#x27;</span><br><span class="line">Uncaught ReferenceError: NexT is not defined</span><br></pre></td></tr></table></figure>
+
+<p>根因是 <code>_config.yml</code> 里写了 <code>tabs: true</code>（布尔值），而主题模板期望对象结构（<code>theme.tabs.enable</code>），渲染页首内联脚本时输出 <code>tabs: ,</code> 造成语法错误。该脚本负责定义全局 <code>NexT</code> 对象，它一崩，motion 动画框架全部失效——而 NexT 的机制是 <strong>CSS 先把内容设为 <code>opacity: 0</code>，再由 JS 动画淡入</strong>，JS 死了，内容就永远透明。</p>
+<p><strong>教训</strong>：curl 只能验证”服务端吐出的字节”，验证不了”浏览器执行后的结果”。排障第一步应该是 F12 控制台。</p>
+<h3 id="2-菜单点击报-Cannot-GET-archives-20"><a href="#2-菜单点击报-Cannot-GET-archives-20" class="headerlink" title="2. 菜单点击报 Cannot GET /archives/%20"></a>2. 菜单点击报 <code>Cannot GET /archives/%20</code></h3><p>两个叠加问题：</p>
+<ul>
+<li><strong>菜单重复</strong>：自定义菜单用了中文键（<code>归档: /archives/</code>），与主题默认菜单的英文键（<code>archives:</code>）是<strong>合并</strong>而非覆盖，渲染出两套菜单。</li>
+<li><strong>URL 被污染</strong>：NexT 5.1.4 菜单值是 <code>路径 || 图标</code> 格式，模板用 <code>split(&#39;||&#39;)</code> 分离。但 Hexo 6 的 <code>url_for()</code> 会把空格和竖线百分号编码，编码发生在 trim 之前、split 之前（侧栏模板），于是生成 <code>/archives/%20</code>、<code>/archives/%7C%7Carchive</code> 这类坏链接。</li>
+</ul>
+<p>修复：菜单改用标准键 + 紧凑格式（<code>archives: /archives/||archive</code>，无空格），中文标签交给主题语言文件自动翻译；再加一个 <code>after_render:html</code> 过滤器兜底，清掉 href 里残留的编码竖线。</p>
+<h3 id="3-标签页、分类页-404"><a href="#3-标签页、分类页-404" class="headerlink" title="3. 标签页、分类页 404"></a>3. 标签页、分类页 404</h3><p>Hexo 的生成器插件只生成 <code>/tags/某个标签/</code> 这类明细页；<code>/tags/</code>、<code>/categories/</code> 索引页需要手工创建带 <code>type</code> 标记的页面：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">标签</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;tags&quot;</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>这是 NexT 的约定，文档不显眼，容易漏。</p>
+<h2 id="二、方法论收获"><a href="#二、方法论收获" class="headerlink" title="二、方法论收获"></a>二、方法论收获</h2><ol>
+<li><strong>分层验证</strong>：服务端字节（curl）→ 浏览器执行（F12 &#x2F; 无头 Chrome）→ 最终视觉（截图）。每一层都可能藏独立的问题，前一层正常不代表后一层正常。</li>
+<li><strong>在 WSL 里也能做浏览器级验证</strong>：直接调用 Windows 的 Chrome（<code>/mnt/c/Program Files/Google/Chrome/Application/chrome.exe</code>）无头模式，配合 <code>--remote-debugging-port</code> 和 puppeteer-core 走 DevTools 协议，可以拿到控制台错误、DOM 状态、计算样式和截图，全程无需离开 WSL。</li>
+<li><strong>老主题 + 新框架 &#x3D; 兼容性雷区</strong>：NexT 5.1.4 生于 Hexo 3 时代，<code>url_for</code> 编码行为、swig 渲染器独立成插件、<code>theme_config</code> 合并语义都变了。这次踩的三个坑（swig 未渲染、<code>tabs: ,</code> 语法错误、<code>%20</code> 坏链接）全是这类缝隙。</li>
+<li><strong>截图是最小成本的复现</strong>：用户一张白屏截图，配合复现（无头 Chrome 截出同样的白屏），直接把”用户环境玄学”变成了可调试的确定性问题。</li>
+</ol>
+<h2 id="三、遗留与建议"><a href="#三、遗留与建议" class="headerlink" title="三、遗留与建议"></a>三、遗留与建议</h2><p>老主题的兼容补丁会越攒越多（目前已有 <code>rewrite-images.js</code>、<code>fix-menu-links.js</code> 两个渲染过滤器）。中长期值得考虑升级到 NexT 8（<code>hexo-theme-next</code> 新版，支持 Hexo 6+、模板改回 nunjucks），一次升级换掉所有补丁。短期维持现状即可，所有已知问题均已修复并上线。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Practice/" rel="tag"># Practice</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/07/30/20260730-%E5%8D%9A%E5%AE%A2%E4%BF%AE%E5%A4%8D%E5%B7%A5%E4%BD%9C%E8%AE%B0%E5%BD%95/" rel="prev" title="博客修复与自动化部署工作记录">
+                  <i class="fa fa-angle-left"></i> 博客修复与自动化部署工作记录
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2026/07/30/20260730-hexo%E5%86%99%E4%BD%9C%E5%8F%91%E5%B8%83%E6%8C%87%E5%BC%95/" rel="next" title="Hexo 博客全自动写作与发布指引（Typora + GitHub Actions 方案）">
+                  Hexo 博客全自动写作与发布指引（Typora + GitHub Actions 方案） <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">goodniuniu</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
